@@ -161,10 +161,10 @@ if report_from in ok_paths:
             sendlog(report_from, "Whitelisting Failure")
             sys.exit()
 
-        addr = addr.lower()[1:-1]
+        addr = addr.split('<')[1].split('>')[0].lower()[1:-1]
 
         with open(blacklist, "a") as spamfile:
-            spamfile.write("whitelist_from {}  # auto-added by {} on {}\n".format(re.escape(addr), report_from, time.strftime("%a, %d %b %Y %H:%M:%S")))
+            spamfile.write("whitelist_from {}  # auto-added by {} on {}\n".format(addr, report_from, time.strftime("%a, %d %b %Y %H:%M:%S")))
             logprint("SpamLogger: Added <{}> to whitelist".format(addr))
 
         try:
