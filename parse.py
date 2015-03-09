@@ -28,7 +28,7 @@ CONFIG = ConfigParser.ConfigParser()
 logger.setLevel(logging.INFO)
 logger.addHandler(handler)
 
-CONFIG.read(scriptdir + 'config.ini')
+CONFIG.read(scriptdir + '/config.ini')
 
 def ConfigSectionMap(section):
     dict1 = {}
