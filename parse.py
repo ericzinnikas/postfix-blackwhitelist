@@ -77,7 +77,7 @@ logprint("SpamLogger: Started")
 parser = email.parser.Parser()
 msg = parser.parse(sys.stdin, headersonly=False)
 
-report_from = msg['Return-Path'].lower()
+report_from = msg['Return-Path'].lower().strip('<>')
 report_to = msg['To'].split('@')[0].lower()
 
 ## TODO validate by IP? MTA IP?
@@ -177,6 +177,6 @@ if report_from in ok_paths:
         logprint("SpamLogger: Quitting.")
         sendlog(report_from, "Whitelisting Success")
     else:
-        logger.info("SpamLogger: Invalid Recipient ({})".format(msg['To']))
+        logprint("SpamLogger: Invalid Recipient ({})".format(msg['To']))
 else:
-    logger.info("SpamLogger: Invalid Sender ({})".format(msg['Return-Path']))
+    logprint("SpamLogger: Invalid Sender ({})".format(report_from))
