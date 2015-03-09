@@ -80,7 +80,10 @@ msg = parser.parse(sys.stdin, headersonly=False)
 #Return-Path Format: '<test@test.test>'
 report_from = msg['Return-Path'].lower().strip('<>')
 #To Format: 'test <test@test.test>'
-report_to = msg['To'].split('@')[0].split('<')[1].lower()
+try:
+    report_to = msg['To'].split('@')[0].split('<')[1].lower()
+except IndexError:  # lazy
+    report_to = msg['To'].split('@')[0].lower()
 
 ## TODO validate by IP? MTA IP?
 ok_paths = allowed_from.split(',')
