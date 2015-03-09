@@ -25,7 +25,7 @@ CONFIG = ConfigParser.ConfigParser()
 logger.setLevel(logging.INFO)
 logger.addHandler(handler)
 
-CONFIG.read('config.ini')
+CONFIG.read('./config.ini')
 
 def ConfigSectionMap(section):
     dict1 = {}
@@ -37,16 +37,16 @@ def ConfigSectionMap(section):
             dict1[option] = None
     return dict1
 
-server = ConfigSectionMap("Mail")['Server']
-blacklist = ConfigSectionMap("Mail")['Blacklist']
+server = ConfigSectionMap("Mail")['server']
+blacklist = ConfigSectionMap("Mail")['blacklist']
 
-send_as = ConfigSectionMap("Identity")['SendAs']
-reply_to = ConfigSectionMap("Identity")['ReplyTo']
-allowed_from = ConfigSectionMap("Identity")['AllowedFrom']
-alert_on = ConfigSectionMap("Identity")['AlertOn']
+send_as = ConfigSectionMap("Identity")['sendas']
+reply_to = ConfigSectionMap("Identity")['replyto']
+allowed_from = ConfigSectionMap("Identity")['allowedfrom']
+alert_on = ConfigSectionMap("Identity")['alerton']
 
-block = ConfigSectionMap("Logging")['Block']
-stats = ConfigSectionMap("Logging")['Stats']
+block = ConfigSectionMap("Logging")['block']
+stats = ConfigSectionMap("Logging")['stats']
 
 logstr = ""
 ret = ""
