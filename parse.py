@@ -128,10 +128,10 @@ if report_from in ok_paths:
         ext = m.group(1)
         mail = report_from[1:-1]
         m2 = re.search(r".+?(\d+).+?" + mail, ext)
-        numspam = m2.group(1)
-        if numspam is None:
+        if m2 is None:
             logstr += "\n\nBlocked {} spam mails to {} in the past 7 days.".format(0, report_from)
         else:
+            numspam = m2.group(1)
             logstr += "\n\nBlocked {} spam mails to {} in the past 7 days.".format(numspam, report_from)
 
         sendlog(report_from, "Blacklisting Success")
