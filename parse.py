@@ -8,6 +8,7 @@ import logging
 import logging.handlers
 import time
 import re
+import os
 import subprocess
 import ConfigParser
 
@@ -18,6 +19,8 @@ import ConfigParser
 ## - code reuse
 ## instructions for setup (mail forwarding, script execution, etc.)
 
+scriptdir = os.getcwd()
+
 logger = logging.getLogger('SpamLogger')
 handler = logging.handlers.SysLogHandler(address='/dev/log')
 CONFIG = ConfigParser.ConfigParser()
@@ -25,7 +28,7 @@ CONFIG = ConfigParser.ConfigParser()
 logger.setLevel(logging.INFO)
 logger.addHandler(handler)
 
-CONFIG.read('./config.ini')
+CONFIG.read(scriptdir + 'config.ini')
 
 def ConfigSectionMap(section):
     dict1 = {}
