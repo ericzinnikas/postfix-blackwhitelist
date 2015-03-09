@@ -12,6 +12,7 @@ Right now I've only tested with postfix, may work elsewhere too.
 2. Setup script alias
   * Add the following line to `/etc/postfix/aliases`
     * `spamparse: "|/etc/postfix/mailscript/parse.py"` (or wherever you are placing this script)
+    * Run `postalias /etc/postfix/aliases` to create the aliases.db file
 3. Create necessary files (see Blacklist/Block/Stats config options)
   * Simply `touch /etc/spamassassin/90_myrules.cf` should be sufficient (also `chmod 0777` is necessary, because postfix executes with user nobody permissions, maybe there is a better way)
   * Repeat for each log/config file
