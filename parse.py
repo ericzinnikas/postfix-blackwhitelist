@@ -16,6 +16,7 @@ import ConfigParser
 ## - reformat to look better
 ## - less confusing names 'SpamLogger' even for whitelist
 ## - code reuse
+## instructions for setup (mail forwarding, script execution, etc.)
 
 logger = logging.getLogger('SpamLogger')
 handler = logging.handlers.SysLogHandler(address='/dev/log')
