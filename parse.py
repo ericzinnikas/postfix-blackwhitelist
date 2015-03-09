@@ -19,7 +19,9 @@ import ConfigParser
 ## - code reuse
 ## instructions for setup (mail forwarding, script execution, etc.)
 
-scriptdir = os.getcwd()
+scriptdir = '/etc/postfix/mailscript'
+## postfix runs as nobody user, which cant do shell things apparently
+#scriptdir = os.getcwd()
 
 logger = logging.getLogger('SpamLogger')
 handler = logging.handlers.SysLogHandler(address='/dev/log')
